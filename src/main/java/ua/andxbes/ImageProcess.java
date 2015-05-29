@@ -41,8 +41,10 @@ public class ImageProcess {
 		return name.endsWith(".jpg");
 	    }
 	});
+	int numRandom = new Random().nextInt(files.length);
+	 System.out.println("numrand = "+ numRandom + "file  = " + files[numRandom]);
 	
-	File file = files[(new Random().nextInt(files.length))];
+	File file = files[numRandom];
 	try {
 	    imageOriginal = new Image(new FileInputStream(file));
 	} catch (FileNotFoundException ex) {

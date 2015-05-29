@@ -134,9 +134,7 @@ public class Controller {
 	    } catch (InterruptedException ex) {
 		Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
 	    }
-
 	}).start();
-
     }
 
     @FXML

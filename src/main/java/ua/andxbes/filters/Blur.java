@@ -41,6 +41,7 @@ public class Blur implements Filter{
 		//int argbmod = (0xff000000) | k << 16 | k << 8 | k;
 
 		//pixelWriter.setArgb(readX, readY, argbmod);
+		
 	    }
 
 	}
