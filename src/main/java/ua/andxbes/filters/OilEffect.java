@@ -40,23 +40,24 @@ public class OilEffect  implements Filter{
 		int rs = 0 ; 
 		int gs = 0 ; 
 		int bs = 0 ;
-		
+		int cur= 0;
+		int[] temp = new int[25];
 		for (int k = -2; k <=2; k++) {
 		    for (int j = -2; j <= 2; j++) {
 			
-			int argb = pixelReader.getArgb(readX+j, readY+k);
-				int r = (argb >> 16) & 0xFF;
-		                int g = (argb >> 8) & 0xFF;
-		                int b = (argb) & 0xFF;
-				rs += r;
-				gs += g;
-				bs += b;
+			temp[cur++] = pixelReader.getArgb(readX+j, readY+k);
+//				int r = (argb >> 16) & 0xFF;
+//		                int g = (argb >> 8) & 0xFF;
+//		                int b = (argb) & 0xFF;
+//				rs += r;
+//				gs += g;
+//				bs += b;
 				//todo
 		    }
 		}
-		rs/=9;
-		gs/=9;
-		bs/=9;
+		
+		
+		
 		
 		int newimgpixels = (0xff000000) | rs << 16 | gs << 8 | bs;
 
@@ -69,6 +70,13 @@ public class OilEffect  implements Filter{
 
 	return wi;
     
+    }
+    
+    private int getMidleValue(int [] array){
+    
+	
+	
+	return 0 ; 
     }
     
 }
