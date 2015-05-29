@@ -22,6 +22,7 @@ import javafx.scene.layout.GridPane;
 import ua.andxbes.filters.Blur;
 import ua.andxbes.filters.Gray;
 import ua.andxbes.filters.Invert;
+import ua.andxbes.filters.OilEffect;
 import ua.andxbes.filters.Sharpen;
 import ua.andxbes.filters.SwitchThePalitra;
 import ua.andxbes.filters.Turn;
@@ -180,7 +181,20 @@ public class Controller {
 
     @FXML
     void sevenClick(Event event) {
-	//imageViewer.setImage(new Image(new ImageProcess().getImageStreamOriginal()));
+	ImageProcess im = new ImageProcess();
+	imageViewer.setImage(im.getImageOriginal());
+
+	new Thread(() -> {
+	    try {
+		im.setFilter(new OilEffect());
+		Thread.sleep(1000);
+		Image immod = im.getImageModified();
+		
+		Platform.runLater(() -> imageViewer.setImage(immod));
+	    } catch (InterruptedException ex) {
+		Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+	    }
+	}).start();
 
     }
 //==========================================================================================
