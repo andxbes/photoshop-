@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane fx:id="rootPanel" alignment="CENTER" prefHeight="520.0" prefWidth="911.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.andxbes.Controller">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="337.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="496.0" valignment="CENTER" vgrow="NEVER" />
+      <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <HBox alignment="CENTER" prefHeight="74.0" prefWidth="627.0" scaleZ="10.0" style="-fx-background-color: linear-gradient(black,grey);" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
+         <children>
+            <RadioButton fx:id="r1" mnemonicParsing="false" onMouseClicked="#oneClick" text="1" textFill="#d6f814">
+               <toggleGroup>
+                  <ToggleGroup fx:id="one" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="r2" mnemonicParsing="false" onMouseClicked="#twoClick" text="2" textFill="#d6f814" toggleGroup="$one" />
+            <RadioButton fx:id="r5" mnemonicParsing="false" onMouseClicked="#threeClick" text="3" textFill="#d6f814" toggleGroup="$one" />
+            <RadioButton fx:id="r4" mnemonicParsing="false" onMouseClicked="#fourClick" text="4" textFill="#d6f814" toggleGroup="$one" />
+            <RadioButton fx:id="r3" mnemonicParsing="false" onMouseClicked="#fiveClick" text="5" textFill="#d6f814" toggleGroup="$one" />
+            <RadioButton mnemonicParsing="false" onMouseClicked="#sixClick" text="6" textFill="#d6f814" toggleGroup="$one" />
+            <RadioButton mnemonicParsing="false" onMouseClicked="#sevenClick" text="7" textFill="#d6f814" toggleGroup="$one" />
+         </children>
+      </HBox>
+      <ImageView fx:id="imageViewer" fitHeight="496.0" layoutY="25.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" scaleZ="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+   </children>
+</GridPane>
