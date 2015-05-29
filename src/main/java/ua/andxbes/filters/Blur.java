@@ -30,22 +30,17 @@ public class Blur implements Filter{
 
 	for (int readY = 0; readY < image.getHeight(); readY++) {
 	    for (int readX = 0; readX < image.getWidth(); readX++) {
-
-		//Color color = pixelReader.getColor(readX, readY);
-		// Now write a brighter color to the PixelWriter.
-		//color = color.invert();
-		//pixelWriter.setColor(readX, readY, color);
 		int argb = pixelReader.getArgb(readX, readY);
 
 		int r = (argb >> 16) & 0xFF;
 		int g = (argb >> 8) & 0xFF;
 		int b = (argb) & 0xFF;
 		
+                      //TODO
+		
+		//int argbmod = (0xff000000) | k << 16 | k << 8 | k;
 
-		int k = (int) (.56 * g + .33 * r + .11 * b);
-		int argbmod = (0xff000000) | k << 16 | k << 8 | k;
-
-		pixelWriter.setArgb(readX, readY, argbmod);
+		//pixelWriter.setArgb(readX, readY, argbmod);
 	    }
 
 	}
