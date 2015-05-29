@@ -64,7 +64,7 @@ public class ImageProcess {
     
     public Image getImageModified(){
 	if(filter==null)filter = (Image image) -> image;
-	return filter.getModifiedByteArrayImage(imageOriginal);
+	return filter.getModifiedImage(imageOriginal);
     }
 
     /**

@@ -18,7 +18,7 @@ import ua.andxbes.Filter;
 public class SwitchThePalitra implements Filter {
 private static  int num = 0 ;
     @Override
-    public Image getModifiedByteArrayImage(Image image) {
+    public Image getModifiedImage(Image image) {
                
 	WritableImage wi = null;
                  switch((num++)%3){

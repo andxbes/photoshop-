@@ -21,7 +21,7 @@ public class Gray implements Filter {
     Logger log = Logger.getLogger(this.getClass().getName());
 
     @Override
-    public Image getModifiedByteArrayImage(Image image) {
+    public Image getModifiedImage(Image image) {
 
 	PixelReader pixelReader = image.getPixelReader();
 	//create WritableImage

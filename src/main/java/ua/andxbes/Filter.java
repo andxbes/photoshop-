@@ -12,6 +12,6 @@ import javafx.scene.image.Image;
  * @author Andr
  */
 public interface Filter {
-      Image getModifiedByteArrayImage(Image image);
+      Image getModifiedImage(Image image);
     
 }

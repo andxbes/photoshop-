@@ -18,7 +18,7 @@ import ua.andxbes.Filter;
 public class Turn implements Filter{
 
     @Override
-    public Image getModifiedByteArrayImage(Image image) {
+    public Image getModifiedImage(Image image) {
 	
 	PixelReader pixelReader = image.getPixelReader();
 	//create WritableImage
