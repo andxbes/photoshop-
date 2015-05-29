@@ -64,7 +64,9 @@ public class ImageProcess {
     
     public Image getImageModified(){
 	if(filter==null)filter = (Image image) -> image;
-	return filter.getModifiedImage(imageOriginal);
+	Image im = filter.getModifiedImage(imageOriginal);
+	System.out.println("successful");
+	return im;
     }
 
     /**
