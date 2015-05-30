@@ -20,7 +20,7 @@ import javafx.scene.image.Image;
  */
 public class ImageProcess {
 
-    private Image imageOriginal;
+    private Image image;
 
     private Filter filter;
 
@@ -46,22 +46,22 @@ public class ImageProcess {
 
 	File file = files[numRandom];
 	try {
-	    imageOriginal = new Image(new FileInputStream(file));
+	    image = new Image(new FileInputStream(file));
 	} catch (FileNotFoundException ex) {
 	    Logger.getLogger(ImageProcess.class.getName()).log(Level.SEVERE, null, ex);
 	}
     }
 
-  ///===========================================================================
+    ///===========================================================================
     public Image getImageOriginal() {
-	return imageOriginal;
+	return image;
     }
 
     public Image getImageModified() {
 	if (filter == null) {
 	    filter = (Image image) -> image;
 	}
-	Image im = filter.getModifiedImage(imageOriginal);
+	Image im = filter.getModifiedImage(image);
 	System.out.println("successful");
 	return im;
     }
@@ -69,8 +69,14 @@ public class ImageProcess {
     /**
      * @param filter the filter to set
      */
-    public void setFilter(Filter filter) {
+    public ImageProcess setFilter(Filter filter) {
 	this.filter = filter;
+	return this;
+    }
+
+    public ImageProcess setImage(Image im) {
+	this.image = im;
+	return this;
     }
 
 }

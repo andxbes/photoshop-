@@ -15,11 +15,11 @@ import ua.andxbes.Filter;
  *
  * @author Andr
  */
-public class PencilEffect implements Filter{
+public class PencilEffect implements Filter {
 
     @Override
     public Image getModifiedImage(Image image) {
-	
+
 	PixelReader pixelReader = image.getPixelReader();
 	//create WritableImage
 	WritableImage wi = new WritableImage(
@@ -30,48 +30,55 @@ public class PencilEffect implements Filter{
 
 	for (int readY = 0; readY < image.getHeight(); readY++) {
 	    for (int readX = 0; readX < image.getWidth(); readX++) {
-		if( readX == 0 || readY == 0 ||
-			(readX == (int)image.getWidth()-1) || (readY == (int)image.getHeight()-1 )){
-		    pixelWriter.setArgb(readX,readY,pixelReader.getArgb(readX, readY));
+		if (readX == 0 || readY == 0
+			|| (readX == (int) image.getWidth() - 1) || (readY == (int) image.getHeight() - 1)) {
+		    pixelWriter.setArgb(readX, readY, getConGoin(pixelReader.getArgb(readX, readY)));
 		} else {
-		int rs = 0 ; 
-		int gs = 0 ; 
-		int bs = 0 ;
-		
-		for (int k = -1; k <=1; k++) {
-		    for (int j = -1; j <= 1; j++) {
-			int argb = pixelReader.getArgb(readX+j, readY+k);
-				int r = (argb >> 16) & 0xFF;
-		                int g = (argb >> 8) & 0xFF;
-		                int b = (argb) & 0xFF;
+		    int rs = 0;
+		    int gs = 0;
+		    int bs = 0;
+
+		    for (int k = -1; k <= 1; k++) {
+			for (int j = -1; j <= 1; j++) {
+			    int argb = pixelReader.getArgb(readX + j, readY + k);
+			    int r = (argb >> 16) & 0xFF;
+			    int g = (argb >> 8) & 0xFF;
+			    int b = (argb) & 0xFF;
+
+			    if (k == -1) {
 				rs += r;
 				gs += g;
 				bs += b;
+			    } else if (k == 1) {
+				rs += r * -1;
+				gs += g * -1;
+				bs += b * -1;
+			    }
+			}
 		    }
-		}
-		rs/=9;
-		gs/=9;
-		bs/=9;
-		
-		rs = (rs + 128) & 0xFF;
-		gs = (gs + 128) & 0xFF;
-		bs = (bs + 128) & 0xFF;
-		
-		int newimgpixels = (0xff000000) | rs << 16 | gs << 8 | bs;
 
-		pixelWriter.setArgb(readX, readY, newimgpixels);
-		
+		    int k = getConGoin(rs, gs, bs) + 128 & 0xff;
+
+		    int newimgpixels = (0xff000000) | k << 16 | k << 8 | k;
+
+		    pixelWriter.setArgb(readX, readY, newimgpixels);
 		}
 	    }
-
 	}
-
-	return wi;
-
-	
+	return new Blur().getModifiedImage(wi);
     }
-    
-   
 
-    
+    private int getConGoin(int i) {
+	int r = (i >> 16) & 0xFF;
+	int g = (i >> 8) & 0xFF;
+	int b = (i) & 0xFF;
+	return getConGoin(r, g, b);
+    }
+
+    //gray
+
+    private int getConGoin(int r, int g, int b) {
+	return ((int) (.56 * g + .33 * r + .11 * b));
+    }
+
 }

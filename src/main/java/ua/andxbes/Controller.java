@@ -29,30 +29,22 @@ import ua.andxbes.filters.Turn;
 
 public class Controller {
 
-    
-
-
     @FXML
     private GridPane rootPanel;
-
- 
 
     @FXML
     private HBox panelControl;
     @FXML
     private ImageView imageViewer;
 
-   
-    
     @FXML
-    void imageMouseClick(){
-        imageViewer.setFitHeight(rootPanel.getHeight() - panelControl.getHeight());
+    void imageMouseClick() {
+	imageViewer.setFitHeight(rootPanel.getHeight() - panelControl.getHeight());
     }
 
     @FXML
     void oneClick(Event event) {
-	
-       
+
 	ImageProcess im = new ImageProcess(new Gray());
 	imageViewer.setImage(im.getImageOriginal());
 
@@ -161,14 +153,14 @@ public class Controller {
 	}).start();
 
     }
-    
+
     @FXML
     void sevenClick(Event event) {
 	ImageProcess im = new ImageProcess(new OilEffect());
 	imageViewer.setImage(im.getImageOriginal());
 
 	new Thread(() -> {
-	    try{
+	    try {
 		Thread.sleep(1000);
 		Image immod = im.getImageModified();
 		Platform.runLater(() -> imageViewer.setImage(immod));
@@ -199,5 +191,4 @@ public class Controller {
 
 
 //==========================================================================================
-
 }

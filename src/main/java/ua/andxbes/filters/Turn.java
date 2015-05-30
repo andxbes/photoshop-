@@ -32,7 +32,7 @@ public class Turn implements Filter{
 	    for (int readXrevers = (int) image.getWidth()-1, readX = 0; readX < image.getWidth(); readX++ , readXrevers--) {
 		int argb = pixelReader.getArgb(readX, readY);
 		
-		pixelWriter.setArgb(readXrevers, readYRevers, argb);
+		pixelWriter.setArgb(readXrevers, readY, argb);
 	    }
 	}
 
