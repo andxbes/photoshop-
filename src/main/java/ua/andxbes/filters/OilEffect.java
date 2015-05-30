@@ -59,24 +59,8 @@ public class OilEffect implements Filter {
     }
 
     protected int getMidleValue(int[] array) {
-
-	int midlArichmetic = 0;
-	
-	for (int b : array) {
-	    midlArichmetic += b;
-	}
-	midlArichmetic /= array.length;
 	Arrays.sort(array);
-
-	for (int i = 0; i < array.length; i++) {
-	    if(array[i]> midlArichmetic  ){
-		midlArichmetic = array[i];
-		break;
-	    }
-	}
-
-
-	return midlArichmetic;
+	return array[13];
     }
 
 }

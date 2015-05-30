@@ -19,31 +19,31 @@ import javafx.scene.image.Image;
  * @author Andr
  */
 public class ImageProcess {
-    private Image imageOriginal ; 
-    
-    
 
-    ImageProcess() {
-	initPicFiles();
-    }
+    private Image imageOriginal;
+
     private Filter filter;
 
-    public ImageProcess(Filter f) {
-	this.filter = f;
-	getRandomFile();
+    public ImageProcess() {
+	initPicFiles();
     }
-    
-     private  void initPicFiles() {
-	
-	File [] files = new File(".").listFiles(new FilenameFilter() {
+
+    public ImageProcess(Filter f) {
+	this();
+	this.filter = f;
+    }
+
+    private void initPicFiles() {
+
+	File[] files = new File(".").listFiles(new FilenameFilter() {
 	    @Override
 	    public boolean accept(File dir, String name) {
 		return name.endsWith(".jpg");
 	    }
 	});
 	int numRandom = new Random().nextInt(files.length);
-	 System.out.println("numrand = "+ numRandom + "file  = " + files[numRandom]);
-	
+	System.out.println("numrand = " + numRandom + "file  = " + files[numRandom]);
+
 	File file = files[numRandom];
 	try {
 	    imageOriginal = new Image(new FileInputStream(file));
@@ -52,18 +52,15 @@ public class ImageProcess {
 	}
     }
 
-    private void getRandomFile() {
-	
-    }
-
   ///===========================================================================
-
     public Image getImageOriginal() {
 	return imageOriginal;
     }
-    
-    public Image getImageModified(){
-	if(filter==null)filter = (Image image) -> image;
+
+    public Image getImageModified() {
+	if (filter == null) {
+	    filter = (Image image) -> image;
+	}
 	Image im = filter.getModifiedImage(imageOriginal);
 	System.out.println("successful");
 	return im;

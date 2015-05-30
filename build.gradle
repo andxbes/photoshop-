@@ -33,7 +33,7 @@ task customJar(type: Jar){
          manifest{
             attributes 'Main-Class': mainclass
          }
-         archiveName = 'YaDisk.jar'
+         archiveName = 'PhotoShop.jar'
          destinationDir = file("${buildDir}/jars")
          from sourceSets.main.output
 }

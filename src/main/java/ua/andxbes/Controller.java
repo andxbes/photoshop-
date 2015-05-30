@@ -23,6 +23,7 @@ import ua.andxbes.filters.Blur;
 import ua.andxbes.filters.Gray;
 import ua.andxbes.filters.Invert;
 import ua.andxbes.filters.OilEffect;
+import ua.andxbes.filters.PencilEffect;
 import ua.andxbes.filters.Sharpen;
 import ua.andxbes.filters.SwitchThePalitra;
 import ua.andxbes.filters.Turn;
@@ -32,9 +33,6 @@ public class Controller {
     public Controller() {
 
     }
-
-    @FXML
-    private ImageView imageViewer;
 
     @FXML
     private RadioButton r2;
@@ -52,22 +50,32 @@ public class Controller {
     private GridPane rootPanel;
 
     @FXML
+    private RadioButton r6;
+
+    @FXML
+    private RadioButton r7;
+
+    @FXML
+    private RadioButton r8;
+
+    @FXML
     private ToggleGroup one;
+
+    @FXML
+    private ImageView imageViewer;
 
     @FXML
     private RadioButton r1;
 
     @FXML
     void oneClick(Event event) {
-	ImageProcess im = new ImageProcess();
+	ImageProcess im = new ImageProcess(new Gray());
 	imageViewer.setImage(im.getImageOriginal());
 
 	new Thread(() -> {
 	    try {
-		im.setFilter(new Gray());
 		Thread.sleep(1000);
 		Image immod = im.getImageModified();
-		
 		Platform.runLater(() -> imageViewer.setImage(immod));
 	    } catch (InterruptedException ex) {
 		Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
@@ -79,15 +87,13 @@ public class Controller {
     @FXML
     void twoClick(Event event) {
 
-	ImageProcess im = new ImageProcess();
+	ImageProcess im = new ImageProcess(new Turn());
 	imageViewer.setImage(im.getImageOriginal());
 
 	new Thread(() -> {
 	    try {
-		im.setFilter(new Turn());
 		Thread.sleep(1000);
 		Image immod = im.getImageModified();
-		
 		Platform.runLater(() -> imageViewer.setImage(immod));
 	    } catch (InterruptedException ex) {
 		Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
@@ -100,12 +106,11 @@ public class Controller {
     @FXML
     void threeClick(Event event) {
 
-	ImageProcess im = new ImageProcess();
+	ImageProcess im = new ImageProcess(new SwitchThePalitra());
 	imageViewer.setImage(im.getImageOriginal());
 
 	new Thread(() -> {
 	    try {
-		im.setFilter(new SwitchThePalitra());
 		Thread.sleep(1000);
 		Image immod = im.getImageModified();
 		Platform.runLater(() -> imageViewer.setImage(immod));
@@ -124,15 +129,13 @@ public class Controller {
 
     @FXML
     void fourClick(Event event) {
-	ImageProcess im = new ImageProcess();
+	ImageProcess im = new ImageProcess(new Invert());
 	imageViewer.setImage(im.getImageOriginal());
 
 	new Thread(() -> {
 	    try {
-		im.setFilter(new Invert());
 		Thread.sleep(1000);
 		Image immod = im.getImageModified();
-		
 		Platform.runLater(() -> imageViewer.setImage(immod));
 	    } catch (InterruptedException ex) {
 		Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
@@ -142,15 +145,13 @@ public class Controller {
 
     @FXML
     void fiveClick(Event event) {
-	ImageProcess im = new ImageProcess();
+	ImageProcess im = new ImageProcess(new Blur());
 	imageViewer.setImage(im.getImageOriginal());
 
 	new Thread(() -> {
 	    try {
-		im.setFilter(new Blur());
 		Thread.sleep(1000);
 		Image immod = im.getImageModified();
-		
 		Platform.runLater(() -> imageViewer.setImage(immod));
 	    } catch (InterruptedException ex) {
 		Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
@@ -161,35 +162,49 @@ public class Controller {
 
     @FXML
     void sixClick(Event event) {
-	ImageProcess im = new ImageProcess();
+	ImageProcess im = new ImageProcess(new Sharpen());
 	imageViewer.setImage(im.getImageOriginal());
 
 	new Thread(() -> {
 	    try {
-		im.setFilter(new Sharpen());
 		Thread.sleep(1000);
 		Image immod = im.getImageModified();
-		
+
 		Platform.runLater(() -> imageViewer.setImage(immod));
 	    } catch (InterruptedException ex) {
 		Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
 	    }
 	}).start();
 
+    }
+    
+    @FXML
+    void sevenClick(Event event) {
+	ImageProcess im = new ImageProcess(new OilEffect());
+	imageViewer.setImage(im.getImageOriginal());
+
+	new Thread(() -> {
+	    try{
+		Thread.sleep(1000);
+		Image immod = im.getImageModified();
+		Platform.runLater(() -> imageViewer.setImage(immod));
+	    } catch (InterruptedException ex) {
+		Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+	    }
+	}).start();
 
     }
 
     @FXML
-    void sevenClick(Event event) {
-	ImageProcess im = new ImageProcess();
+    void eightClick(Event event) {
+
+	ImageProcess im = new ImageProcess(new PencilEffect());
 	imageViewer.setImage(im.getImageOriginal());
 
 	new Thread(() -> {
 	    try {
-		im.setFilter(new OilEffect());
 		Thread.sleep(1000);
 		Image immod = im.getImageModified();
-		
 		Platform.runLater(() -> imageViewer.setImage(immod));
 	    } catch (InterruptedException ex) {
 		Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
@@ -197,6 +212,8 @@ public class Controller {
 	}).start();
 
     }
+
+
 //==========================================================================================
 
 }
