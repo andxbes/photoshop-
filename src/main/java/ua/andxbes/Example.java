@@ -30,7 +30,7 @@ public class Example extends Application {
 	//fxLoader.setController(control);
 	Scene scene = new Scene(root);
 	primaryStage.setScene(scene);
-	primaryStage.resizableProperty().set(false);
+	//primaryStage.resizableProperty().set(false);
 	primaryStage.show();
 
     }

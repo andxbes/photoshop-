@@ -14,11 +14,10 @@ import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import ua.andxbes.filters.Blur;
 import ua.andxbes.filters.Gray;
 import ua.andxbes.filters.Invert;
@@ -30,45 +29,30 @@ import ua.andxbes.filters.Turn;
 
 public class Controller {
 
-    public Controller() {
+    
 
-    }
-
-    @FXML
-    private RadioButton r2;
-
-    @FXML
-    private RadioButton r3;
-
-    @FXML
-    private RadioButton r4;
-
-    @FXML
-    private RadioButton r5;
 
     @FXML
     private GridPane rootPanel;
 
-    @FXML
-    private RadioButton r6;
+ 
 
     @FXML
-    private RadioButton r7;
-
-    @FXML
-    private RadioButton r8;
-
-    @FXML
-    private ToggleGroup one;
-
+    private HBox panelControl;
     @FXML
     private ImageView imageViewer;
 
+   
+    
     @FXML
-    private RadioButton r1;
+    void imageMouseClick(){
+        imageViewer.setFitHeight(rootPanel.getHeight() - panelControl.getHeight());
+    }
 
     @FXML
     void oneClick(Event event) {
+	
+       
 	ImageProcess im = new ImageProcess(new Gray());
 	imageViewer.setImage(im.getImageOriginal());
 

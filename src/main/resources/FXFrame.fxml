@@ -1,40 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.canvas.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.web.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane fx:id="rootPanel" alignment="CENTER" prefHeight="520.0" prefWidth="911.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.andxbes.Controller">
-   <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES"  minWidth="10.0" prefWidth="337.0" />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints fillHeight="false"  minHeight="10.0" prefHeight="496.0" valignment="CENTER" vgrow="NEVER" />
-      <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
-   </rowConstraints>
+<GridPane fx:id="rootPanel"  alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.andxbes.Controller">
+  <columnConstraints>
+    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="1.7976931348623157E308" minHeight="100.0" prefHeight="368.0" valignment="CENTER" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+  </rowConstraints>
    <children>
-      <HBox alignment="CENTER" prefHeight="74.0" prefWidth="627.0" scaleZ="10.0" style="-fx-background-color: linear-gradient(black,grey);" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
+      <HBox fx:id="panelControl" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: red;" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
          <children>
-            <RadioButton fx:id="r1" mnemonicParsing="false" onMouseClicked="#oneClick" text="1" textFill="#f5fc2c">
+            <RadioButton mnemonicParsing="false" onMouseClicked="#oneClick" text="Gray">
                <toggleGroup>
                   <ToggleGroup fx:id="one" />
                </toggleGroup></RadioButton>
-            <RadioButton fx:id="r2"  onMouseClicked="#twoClick" text="2" textFill="#f5fc2c" toggleGroup="$one" />
-            <RadioButton fx:id="r3"  onMouseClicked="#threeClick" text="3" textFill="#f5fc2c" toggleGroup="$one" />
-            <RadioButton fx:id="r4"  onMouseClicked="#fourClick" text="4" textFill="#f5fc2c" toggleGroup="$one" />
-            <RadioButton fx:id="r5"  onMouseClicked="#fiveClick" text="5" textFill="#f5fc2c" toggleGroup="$one" />
-            <RadioButton fx:id="r6"  onMouseClicked="#sixClick" text="6" textFill="#f5fc2c" toggleGroup="$one" />
-            <RadioButton fx:id="r7"  onMouseClicked="#sevenClick" text="7" textFill="#f5fc2c" toggleGroup="$one" />
-            <RadioButton fx:id="r8"  onMouseClicked="#eightClick" text="8" textFill="#f5fc2c" toggleGroup="$one" />
+            <RadioButton mnemonicParsing="false" onMouseClicked="#twoClick" text="Turn" toggleGroup="$one" />
+            <RadioButton mnemonicParsing="false" onMouseClicked="#threeClick" text="SwitchPal" toggleGroup="$one" />
+            <RadioButton mnemonicParsing="false" onMouseClicked="#fourClick" text="Invert" toggleGroup="$one" />
+            <RadioButton mnemonicParsing="false" onMouseClicked="#fiveClick" text="Blur" toggleGroup="$one" />
+            <RadioButton mnemonicParsing="false" onMouseClicked="#sixClick" text="Sharpen" toggleGroup="$one" />
+            <RadioButton mnemonicParsing="false" onMouseClicked="#sevenClick" text="OilEffect" toggleGroup="$one" />
+            <RadioButton mnemonicParsing="false" onMouseClicked="#eightClick" text="PencilEffect" toggleGroup="$one" />
+            
+            
          </children>
       </HBox>
-      <ImageView fx:id="imageViewer" fitHeight="496.0" layoutY="25.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" scaleZ="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+      <ImageView fx:id="imageViewer" onMouseClicked="#imageMouseClick" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="TOP" />
    </children>
 </GridPane>
